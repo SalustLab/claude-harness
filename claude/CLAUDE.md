@@ -55,3 +55,5 @@ activated only when requested; use normal prose for persisted text and questions
 No plugin, MCP, browser automation, subscription tier or model is required by
 this harness. Use tools actually available in the host; report unavailable
 capabilities honestly and use suitable local or official-documentation fallbacks.
+When Context7 is available, use it for external library and framework semantics
+as the router describes; local code still decides how this project uses them.

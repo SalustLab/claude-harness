@@ -17,13 +17,14 @@ installed `SKILL.md` directly; do not invent tools or capabilities.
 | Work | Workflow | Conditions |
 |---|---|---|
 | Mechanical or familiar local edit | Direct edit and relevant check | No mandatory skill package. |
-| Unfamiliar or cross-layer behavior | `zoom-out` + `tdd` | Map callers and flow, then test meaningful behavior at public seams. |
-| Localized testable behavior or known-cause bug | `tdd` | Establish expected behavior independently of the implementation. |
-| Unknown-cause, intermittent or performance bug | `diagnose` | Reproduce and minimise first; confirmed cause hands off to `tdd` at a correct seam. |
-| Open product/design decision | `brainstorming` | Only when material choices remain unresolved after inspection. |
+| Unfamiliar or cross-layer behavior | `zoom-out` + `tdd` | Map callers and flow, then test meaningful behavior at public seams. Context7 when framework/library behavior matters. |
+| Localized testable behavior or known-cause bug | `tdd` | Establish expected behavior independently of the implementation. Context7 if library behavior is uncertain. |
+| Unknown-cause, intermittent or performance bug | `diagnose` | Reproduce and minimise first; confirmed cause hands off to `tdd` at a correct seam. Context7 when the cause may lie in framework/library behavior. |
+| Open product/design decision | `brainstorming` | Only when material choices remain unresolved after inspection. Context7 if a framework constrains the design. |
 | Domain decision or glossary/ADR work | `grill-with-docs` | Check settled requirements without forcing an interview or creating docs. |
 | Structural architecture review | `zoom-out` + `improve-codebase-architecture` | Use only when requested or genuinely needed; ordinary refactors use behavior protection. |
-| Refactor | `zoom-out` + `tdd` where useful | Preserve observable behavior; do not write tests that merely repeat the implementation. |
+| Refactor | `zoom-out` + `tdd` where useful | Preserve observable behavior; do not write tests that merely repeat the implementation. Context7 if framework constraints matter. |
+| Question or decision about a library, framework, SDK, API, CLI or server behavior | Context7 + local inspection | Local code shows how this project uses it; Context7 gives external, version-specific semantics. |
 | Agent instructions or skill maintenance | `zoom-out` + `grill-with-docs` as a consistency check | Validate metadata/references for skills; no TDD unless executable behavior changes. |
 | Agent-readiness audit | `agent-doctor` | Documentation/navigation gaps, not application runtime bugs. |
 | Review of a diff, commit, branch or revision | `diff-review` | Add `security-audit` for a sensitive surface and `web-design-guidelines` when UI review is requested. |
@@ -89,12 +90,33 @@ request and repository cannot answer. Reuse scoped decisions and authorizations.
 
 ## Tools and references
 
-Inspect installed versions and local conventions. When a decision depends on
-external framework/library semantics, consult the matching official docs; use
-Context7 if available and appropriate. It is optional, not an installation
-requirement. If documentation is unavailable, report that and inspect installed
-packages/local sources with explicit assumptions. Never claim a lookup occurred
-when it did not.
+### Library documentation (Context7)
+
+Inspect installed versions and local conventions first. Local code is the source
+of truth for how this project uses a framework; current documentation is the
+source of truth for external, version-specific semantics.
+
+When Context7 is available, it is **required** for deciding, changing or relying
+on external framework/library/server semantics: ORM migrations and relationship
+or delete behavior, web frameworks and servers, HTTP headers, buffering and
+streaming, redirects, cookies, authentication, serialization, dependency
+injection, UI and state libraries, build tools, export/import packages, test and
+mocking libraries, external APIs and SDKs. Prefer it over general web search for
+programming-library questions.
+
+- Skip it only when following an existing local pattern without changing
+  external semantics, and say so: `Context7 skipped: followed existing local
+  pattern only; no external framework/library semantics changed.`
+- Announce `required`, `skipped: <reason>` or `unavailable: <reason>`, never
+  "Context7 if needed". Announced means called: do not cancel it afterwards as
+  "established knowledge".
+- Log `Context7 used: <one-line finding>` on success.
+- When it is not installed or fails, log `Context7 unavailable: <reason>`, then
+  use official documentation or installed packages and local sources with
+  explicit assumptions. Its absence never blocks the task and is no reason to
+  ask the user for scope. Never claim a lookup occurred when it did not.
+
+### Other tools
 
 When behavior must be understood from a compiled binary, app package, managed
 assembly or minified bundle without usable source, use a reverse-engineering MCP
@@ -122,6 +144,8 @@ No specific agent model or plugin is assumed.
   scenario and confirmed cause as they become available. A plan is not a run.
 - `brainstorming`: agreed design, applicable approval, opt-out or spike scope.
 - Architecture review: chosen scope, observed friction and grounded candidates.
+- Context7: `used: <finding>`, `skipped: <reason>` or `unavailable: <reason>`
+  before the decision that depends on it.
 - `diff-review`: VCS and scope command, specification source (or none), findings
   per axis.
 - `security-audit`: the surface that triggered it, scope, and findings or "no
