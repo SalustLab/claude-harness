@@ -52,7 +52,7 @@ class InstallTests(unittest.TestCase):
         self.assertEqual(before, self.snapshot())
         self.assertEqual(settings.read_bytes(), b'{"permissions":{"defaultMode":"default"}}\n')
         self.assertEqual(other.read_bytes(), b"My own skill\n")
-        self.assertEqual(len(list((self.config / "skills").glob("*/SKILL.md"))), 10)
+        self.assertEqual(len(list((self.config / "skills").glob("*/SKILL.md"))), 17)
         self.assertFalse((self.config / ".harness-backups").exists())
 
     def test_existing_instructions_survive_and_have_exact_backup(self):

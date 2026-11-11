@@ -1,6 +1,6 @@
 # claude-harness
 
-My portable development harness for Claude Code: nine reusable skills, a small
+My portable development harness for Claude Code: sixteen reusable skills, a small
 instruction file and an agent-friendly installer. Clone it, ask your agent to
 review and apply it to a project or user profile, and keep your existing setup.
 
@@ -58,17 +58,24 @@ for collisions, upgrades, backup recovery, removal and optional tools.
 
 ## Included workflows
 
-| Skill | Purpose |
-|---|---|
-| `coding-skill-router` | Select workflows by scope and intent; skip ceremony for mechanical changes. |
-| `zoom-out` | Map unfamiliar code, callers and data flow before editing. |
-| `tdd` | Test observable behavior in small RED/GREEN slices. |
-| `diagnose` | Reproduce, minimise and investigate an unclear bug. |
-| `brainstorming` | Resolve open product/design choices without reopening settled requirements. |
-| `grill-with-docs` | Stress-test domain decisions and maintain glossaries/ADRs when useful. |
-| `improve-codebase-architecture` | Identify grounded structural improvements. |
-| `agent-doctor` | Audit agent documentation and navigation. |
-| `caveman` | Optional concise communication style, only when requested. |
+| Skill | Purpose | Original source |
+|---|---|---|
+| `coding-skill-router` | Select workflows by scope and intent; skip ceremony for mechanical changes. | Original |
+| `zoom-out` | Map unfamiliar code, callers and data flow before editing. | [Matt Pocock](https://github.com/mattpocock/skills/blob/ab45d5e6e1733b7ae27a0795f2a86418c2d451a0/zoom-out/SKILL.md) |
+| `tdd` | Test observable behavior in small RED/GREEN slices. | [Matt Pocock](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd) |
+| `diagnose` | Reproduce, minimise and investigate an unclear bug. | [Matt Pocock: diagnosing-bugs](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs) |
+| `brainstorming` | Resolve open product/design choices without reopening settled requirements. | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/brainstorming) |
+| `grill-with-docs` | Stress-test domain decisions and maintain glossaries/ADRs when useful. | [Matt Pocock](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs) |
+| `improve-codebase-architecture` | Identify grounded structural improvements. | [Matt Pocock](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture) |
+| `agent-doctor` | Audit agent documentation and navigation. | Original |
+| `caveman` | Optional concise communication style, only when requested. | [Julius Brussee](https://github.com/JuliusBrussee/caveman) |
+| `diff-review` | Review a diff, commit, branch or revision on two axes: standards and specification. | [Matt Pocock: code-review](https://github.com/mattpocock/skills/tree/4ae2317ddb22/skills/engineering/code-review) |
+| `security-audit` | Trace untrusted input on sensitive surfaces and report confirmed vulnerabilities. | [Sentry: security-review](https://github.com/getsentry/skills/tree/e94f22214528/skills/security-review), [OWASP Cheat Sheets](https://cheatsheetseries.owasp.org/) |
+| `web-design-guidelines` | Static UI/UX and accessibility review of web interface code. | [Vercel Labs](https://github.com/vercel-labs/agent-skills/tree/1a2c79d4e6c4/skills/web-design-guidelines), [rules](https://github.com/vercel-labs/web-interface-guidelines/tree/434b7f913646) |
+| `release-readiness` | Check with evidence whether a task is done and whether changes are ready to deliver. | Original |
+| `skill-scanner` | Audit an external skill before importing or updating it. | [Sentry](https://github.com/getsentry/skills/tree/e94f22214528/skills/skill-scanner) |
+| `skill-creator` | Create, validate and evaluate skills with this harness's conventions. | [Anthropic](https://github.com/anthropics/skills/tree/2c5958ecac7c/skills/skill-creator) |
+| `using-git-worktrees` | Optional isolated Git worktree, only on explicit request. | [obra/superpowers](https://github.com/obra/superpowers/tree/22f0b463e7a5/skills/using-git-worktrees) |
 
 The harness reuses the project's language, conventions and authorization.
 Skills can be selected automatically or invoked explicitly. They are guidance,

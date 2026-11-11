@@ -18,6 +18,8 @@ PATTERNS = {
     "personal profile path": r"(?i)[A-Z]:[\\/]+Users[\\/]+[A-Za-z0-9_.-]+",
     "email address": r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}",
 }
+# The SSRF reference documents the private ranges a validator must block.
+ALLOWED = {("claude/skills/security-audit/references/ssrf.md", "private network address")}
 
 
 def files():
@@ -45,7 +47,7 @@ def main():
             continue
         for number, line in enumerate(text.splitlines(), 1):
             for kind, pattern in PATTERNS.items():
-                if re.search(pattern, line):
+                if (relative.as_posix(), kind) not in ALLOWED and re.search(pattern, line):
                     errors.append(f"{relative}:{number}: {kind}")
         if path.name == "SKILL.md":
             front = re.match(r"\A---\r?\n(.*?)\r?\n---\r?\n", text, re.S)

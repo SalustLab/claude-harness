@@ -41,6 +41,11 @@ Use behavioral tests for meaningful executable changes. For instruction-only
 work, check consistency, skill metadata and supporting references. Distinguish
 implementation complete, checks passed and deployment confirmed; report checks
 as passed only when they ran. Keep relevant evidence and explicit blockers.
+Changes that touch a sensitive surface (authentication, permissions, untrusted
+input reaching SQL/shell/HTML/paths/URLs, uploads, parsing, secrets,
+integrations) get a security review; trivial changes do not need one. Task
+completion, release readiness and publication are separate claims, and none of
+them authorizes commit, push, merge, deploy or ticket updates.
 
 Use clear, concise prose in the user's language. Preserve exact code, commands,
 identifiers, numbers, units, restrictions and error strings. Give brief progress

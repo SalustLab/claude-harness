@@ -11,7 +11,7 @@ actual environment and project requirements. Do not infer tracker names,
 deployment flow, database access or permissions from this package.
 
 The installer adds a managed block to the destination's `.claude/CLAUDE.md` (or
-user-config `CLAUDE.md`), and copies nine skill directories including licenses.
+user-config `CLAUDE.md`), and copies sixteen skill directories including licenses.
 It does not replace a project-root `CLAUDE.md` or `AGENTS.md`. Existing root and
 nested instructions may both load: inspect their compatibility before applying.
 
@@ -68,7 +68,7 @@ and any customizations. Recover earlier same-named skills from the backups.
 
 ## Runtime verification
 
-Restart Claude Code and run `/skills`. Check the nine names, then try a small
+Restart Claude Code and run `/skills`. Check the sixteen names, then try a small
 read-only request to map part of your project. `--check` proves files match; it
 does not authenticate Claude Code, prove tool availability or test model behavior.
 Where the host provides a different skill-loading tool, adapt the invocation
@@ -86,6 +86,12 @@ instead of inventing tool names.
   and runs only after the user accepts it. Read its `visual-companion.md` before
   starting it. Without those tools, use text sketches and normal design dialogue.
 - `caveman` is an optional style, not an execution workflow.
+- `skill-scanner`'s automated scan needs PyYAML (via `uv` or a throwaway virtual
+  environment); without it the skill falls back to a manual review.
+- `skill-creator`'s validation and eval scripts need PowerShell (Windows
+  PowerShell 5.1 or `pwsh`); evals start real `claude -p` sessions and cost tokens.
+- `web-design-guidelines` fetches the current upstream rules when network access
+  is available and falls back to its bundled snapshot.
 
 Do not weaken permissions, set a paid model, install MCP servers or log in to
 services to make the basic harness work. Those are separate choices for the user.
