@@ -1,6 +1,6 @@
 # claude-harness
 
-A portable development harness for Claude Code: nine reusable skills, a small
+My portable development harness for Claude Code: nine reusable skills, a small
 instruction file and an agent-friendly installer. Clone it, ask your agent to
 review and apply it to a project or user profile, and keep your existing setup.
 
