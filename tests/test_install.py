@@ -118,6 +118,17 @@ class InstallTests(unittest.TestCase):
         self.run_install("--apply", code=1)
         self.assertEqual(list(outside.iterdir()), [])
 
+    def test_parent_alias_is_resolved_without_following_config_links(self):
+        alias = Path(self.temp.name) / "project alias"
+        try:
+            alias.symlink_to(self.project, target_is_directory=True)
+        except OSError:
+            self.skipTest("Symlink creation is not available on this host")
+        result = subprocess.run([sys.executable, str(SCRIPT), "--project", str(alias), "--apply"],
+                                capture_output=True, text=True, encoding="utf-8")
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.run_install("--check")
+
     def test_changed_destination_is_not_overwritten(self):
         self.config.mkdir()
         instructions = self.config / "CLAUDE.md"

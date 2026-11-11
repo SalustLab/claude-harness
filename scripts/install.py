@@ -36,6 +36,9 @@ def instruction_content(existing, content):
 
 
 def plan_install(destination):
+    # Resolve OS/user aliases above the chosen config root (e.g. macOS /var),
+    # but never resolve the config directory itself or its managed children.
+    destination = destination.parent.resolve() / destination.name
     reject_links(destination)
     sources = sorted(p for p in SOURCE.rglob("*") if p.is_file())
     if not sources or not (SOURCE / "CLAUDE.md").is_file():
@@ -81,6 +84,7 @@ def atomic_write(path, data):
 
 
 def apply_plan(destination, plan):
+    destination = destination.parent.resolve() / destination.name
     # Reconcile before any write: a stale preview must not overwrite local work.
     for _, target, before, _, _ in plan:
         reject_links(target)
