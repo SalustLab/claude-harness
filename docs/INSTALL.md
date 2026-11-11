@@ -76,8 +76,12 @@ instead of inventing tool names.
 
 ## Optional integrations
 
-- Context7 can help look up versioned library docs. Official docs and installed
-  sources are valid fallbacks; no API key is included or needed for installation.
+- Context7 (recommended) can help look up versioned library docs. Official docs
+  and installed sources are valid fallbacks; no API key is included or needed for
+  installation.
+- REA (recommended) can help reverse engineer binaries, apps and bundles when
+  source is missing. Use it only on artifacts the user is authorized to analyze.
+  See the README for setup commands for both servers.
 - Browser MCPs may help UI tests when the user authorizes them. They are not
   configured by this package.
 - A simplicity plugin can complement the built-in minimal-change guidance.

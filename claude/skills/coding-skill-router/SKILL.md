@@ -96,6 +96,11 @@ requirement. If documentation is unavailable, report that and inspect installed
 packages/local sources with explicit assumptions. Never claim a lookup occurred
 when it did not.
 
+When behavior must be understood from a compiled binary, app package, managed
+assembly or minified bundle without usable source, use a reverse-engineering MCP
+such as REA if available, only on artifacts the user is authorized to analyze.
+Pair it with `zoom-out` or `diagnose`, and cite its evidence.
+
 No external documentation tool is needed for changes confined to local
 instructions and established patterns without new external-semantic claims.
 Announced tools must be called or their unavailability reported.

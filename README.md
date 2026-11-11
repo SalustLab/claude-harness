@@ -81,6 +81,31 @@ The harness reuses the project's language, conventions and authorization.
 Skills can be selected automatically or invoked explicitly. They are guidance,
 not enforcement of permissions or a guarantee of correct agent behavior.
 
+## Recommended MCP servers
+
+The harness works without MCP servers, but two of them pair well with the skills.
+They are recommendations only: the installer never adds or configures them.
+
+| MCP | Use it for | Pairs with |
+|---|---|---|
+| [Context7](https://github.com/upstash/context7) | Current, version-specific documentation for libraries, frameworks, SDKs and CLIs, so decisions do not rely on stale training data. | `tdd`, `diagnose`, `brainstorming`, `zoom-out`, `security-audit` and `diff-review` whenever a change depends on external framework or library behavior. |
+| [REA](https://github.com/morluto/rea) | Reverse engineering of native binaries, managed assemblies, Android/Apple apps, web bundles and runtimes, with evidence attached to each result. | `zoom-out` and `diagnose` when the source is missing or incomplete, `security-audit` for compiled dependencies, `skill-scanner` for bundled binaries or minified scripts. |
+
+```sh
+claude mcp add --scope user --transport http context7 https://mcp.context7.com/mcp
+claude mcp add --scope user rea -- npx -y rea-agents@6.3.0 mcp
+```
+
+REA needs Node.js. On native Windows, wrap the command as
+`cmd /c npx -y rea-agents@6.3.0 mcp`. Context7 works without a key; an API key
+from its dashboard (`--header "CONTEXT7_API_KEY: <key>"`) raises rate limits.
+Keep keys in your own configuration, never in this repository. Review each
+server's documentation and license before installing, and run reverse
+engineering only on artifacts you own or are authorized to analyze.
+
+When a server is unavailable, the router falls back to official documentation,
+installed packages and local sources, and reports the lookup as not performed.
+
 ## What gets installed
 
 ```text
