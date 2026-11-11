@@ -77,6 +77,8 @@ for collisions, upgrades, backup recovery, removal and optional tools.
 | `skill-creator` | Create, validate and evaluate skills with this harness's conventions. | [Anthropic](https://github.com/anthropics/skills/tree/2c5958ecac7c/skills/skill-creator) |
 | `using-git-worktrees` | Optional isolated Git worktree, only on explicit request. | [obra/superpowers](https://github.com/obra/superpowers/tree/22f0b463e7a5/skills/using-git-worktrees) |
 
+All of the above skills were modified by me to work better together, with this harness.
+They're not the same as their original versions.
 The harness reuses the project's language, conventions and authorization.
 Skills can be selected automatically or invoked explicitly. They are guidance,
 not enforcement of permissions or a guarantee of correct agent behavior.
