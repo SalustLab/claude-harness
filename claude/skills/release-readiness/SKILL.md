@@ -228,7 +228,7 @@ Release readiness: not assessed
 Decision: GO
 ```
 
-Other labels may follow the user's language, but two lines stay literal English: the level header (`TASK READINESS` or `RELEASE READINESS`, uppercase) and the final line `Decision: GO`, `Decision: NO-GO` or `Decision: CONDITIONAL` (nothing else on the line). They are the unambiguous, machine-checkable level and verdict; do not replace them with prose such as "decisão: GO para a tarefa". When both levels were asked, give the Release report (with its `Task readiness:` line) and end with the Release decision.
+Other labels may follow the user's language, but two lines stay literal English: the level header (`TASK READINESS` or `RELEASE READINESS`, uppercase) and the final line `Decision: GO`, `Decision: NO-GO` or `Decision: CONDITIONAL` (nothing else on the line). They are the unambiguous, machine-checkable level and verdict; do not replace them with prose such as "decisão: GO para a tarefa". When both levels were asked, give the Release report (with its `Task readiness:` line) and end with the Release decision. An answer has exactly one `Decision:` line; state the Task verdict only as `Task readiness: <verdict>`, never as a second `Decision:` line.
 
 Write a Markdown report file only when the user asks, or when a long corporate matrix needs to travel with the homologation evidence. Use the project's existing location for such documents (ask if none exists). Never commit it, and never create report files for trivial tasks.
 

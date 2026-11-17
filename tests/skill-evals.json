@@ -392,7 +392,7 @@
       ],
       "output_must_match": [
         "(?i)decis(?:ion|ão|ao)\\W{0,8}(CONDITIONAL|NO-?GO)",
-        "(?i)(spec|especifica|crit[eé]rio|requisit)[^\\n]{0,120}(none|nenhum|n/a|not available|unavailable|not found|indispon|ausente|n[aã]o (encontrad|identificad|dispon|exist))"
+        "(?i)(spec|especifica|crit[eé]rio|requisit)[^\\n]{0,120}(none|nenhum|n/a|not available|unavailable|not found|not identified|session|indispon|ausente|sem (requisito|especifica|spec)|n[aã]o (achei|encontrad|identificad|dispon|exist))"
       ],
       "output_must_not_match": [
         "(?i)decis(?:ion|ão|ao)\\W{0,8}GO\\b"

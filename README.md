@@ -60,7 +60,7 @@ for collisions, upgrades, backup recovery, removal and optional tools.
 
 | Skill | Purpose | Original source |
 |---|---|---|
-| `coding-skill-router` | Select workflows by scope and intent; skip ceremony for mechanical changes. | Original |
+| `coding-skill-router` | Select workflows by scope and intent; skip ceremony for mechanical changes. Once invoked, a skill-scoped `Stop` prompt hook (no shell) asks for the closing Task gate when an implementation ends without it. | Original |
 | `zoom-out` | Map unfamiliar code, callers and data flow before editing. | [Matt Pocock](https://github.com/mattpocock/skills/blob/ab45d5e6e1733b7ae27a0795f2a86418c2d451a0/zoom-out/SKILL.md) |
 | `tdd` | Test observable behavior in small RED/GREEN slices. | [Matt Pocock](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd) |
 | `diagnose` | Reproduce, minimise and investigate an unclear bug. | [Matt Pocock: diagnosing-bugs](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs) |
@@ -118,7 +118,8 @@ installed packages and local sources, and reports the lookup as not performed.
 ```
 
 Existing settings, MCPs, hooks, plugins, model choices, credentials and unrelated
-skills are left alone. There is no command that snapshots your profile back into
+skills are left alone. The only hook shipped is the router's skill-scoped `Stop`
+prompt above; it lives in the skill's frontmatter, not in your settings. There is no command that snapshots your profile back into
 this public repository. Optional visual brainstorming uses bundled Node/Bash
 helpers only after user acceptance; the core harness works without them.
 

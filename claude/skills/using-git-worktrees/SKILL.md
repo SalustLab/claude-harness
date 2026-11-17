@@ -1,6 +1,6 @@
 ---
 name: using-git-worktrees
-description: Optional isolated workspace for Git repositories only - detect existing isolation, prefer the harness's native worktree tools, fall back to git worktree with explicit consent, and clean up safely. Use only when the user explicitly asks for isolation, a worktree or parallel work on another branch; PT - "cria um worktree", "trabalha isolado num worktree", "quero isolar essa feature num worktree". Never for SVN working copies or folders without Git (detect the VCS first), never automatic for simple tasks, and never a prerequisite for implementing features.
+description: Optional isolated workspace for Git repositories only - detect existing isolation, prefer the harness's native worktree tools, fall back to git worktree with explicit consent, and clean up safely. Use only when the user explicitly asks for isolation, a worktree or parallel work on another branch; PT - "cria um worktree", "trabalha isolado num worktree", "quero isolar essa feature num worktree". Before invoking it, check the VCS (`git rev-parse --show-toplevel`; a `.svn` folder or `svn info` means SVN): never invoke it for SVN working copies or folders without Git, never automatic for simple tasks, and never a prerequisite for implementing features.
 license: LICENSE
 metadata:
   short-description: Opt-in Git worktree isolation

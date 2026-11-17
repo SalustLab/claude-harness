@@ -2,6 +2,20 @@
 name: coding-skill-router
 description: Select workflows for non-trivial code changes, debugging, architecture reviews, change reviews, security-sensitive work, delivery readiness, agent instructions and skill maintenance. Route by scope and intent rather than task names. Skip for mechanical edits and unrelated questions.
 license: MIT
+hooks:
+  Stop:
+    - hooks:
+        - type: prompt
+          once: true
+          prompt: >-
+            Closing-gate check for a routed coding session. Input: $ARGUMENTS.
+            Return {"ok": true} when stop_hook_active is true, when the last assistant
+            message already contains a TASK READINESS report or says release-readiness ran,
+            when the work was a narrow fix with no new behavior, or when the session only
+            planned or answered without editing code. Otherwise return {"ok": false,
+            "reason": "Closing Task gate pending: invoke the release-readiness skill at the
+            Task level for this implementation before the final report (coding-skill-router
+            gates)."}
 ---
 
 # Coding Skill Router
@@ -9,8 +23,9 @@ license: MIT
 Inspect the request, relevant project instructions and existing implementation.
 Choose the workflows that help with the actual task. Explain the choice briefly,
 open the selected skills, apply them, and report what they found. Announcing a
-skill is not evidence that it ran. Use the host's skill loader or read its
-installed `SKILL.md` directly; do not invent tools or capabilities.
+skill is not evidence that it ran. Invoke skills through the host's skill tool;
+read an installed `SKILL.md` directly only when no skill tool exists, because a
+direct read skips the skill's hooks. Do not invent tools or capabilities.
 
 ## Scope and intent
 

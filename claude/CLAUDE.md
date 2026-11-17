@@ -11,8 +11,11 @@ deploy, contact third parties or change production systems.
   preserve the project's document names and purposes.
 - For non-trivial code, context-documentation or skill work, open
   `coding-skill-router` and select the applicable workflows. Use the host's skill
-  mechanism, or read the installed `SKILL.md` directly when that is unavailable.
-  Small mechanical edits need no ceremony. Classify scope and intent, not labels.
+  tool; read the installed `SKILL.md` directly only when no skill tool exists,
+  because a direct read skips the skill's hooks.
+  Small mechanical edits need no ceremony; new or changed behavior (a new
+  function, rule or route) is not a mechanical edit, even in one file. Classify
+  scope and intent, not labels.
 - Reuse requirements, decisions and scoped authorization already supplied. Ask
   only about material choices the available evidence cannot resolve. State
   implementation assumptions without presenting them as the user's decisions.

@@ -62,6 +62,14 @@ class SkillInvariants(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, self.router)
 
+    def test_router_stop_hook_enforces_closing_gate_without_shell(self):
+        fm = frontmatter(ROUTER)
+        self.assertRegex(fm, r"(?m)^hooks:\r?\n  Stop:")
+        self.assertIn("type: prompt", fm)
+        self.assertNotIn("type: command", fm)
+        self.assertIn("stop_hook_active", fm)
+        self.assertIn("release-readiness", fm)
+
     def test_diff_review_labels_follow_conversation_language(self):
         dr = read("diff-review")
         self.assertIn("(STD)", dr)
