@@ -55,18 +55,26 @@ not selected for SVN or folders without Git.
   scope, even for a one-line change.
 - **Review.** `diff-review` on request, for PRs/branches/revisions, or for complex
   diffs before delivery.
-- **Task completion.** Close medium or larger implementations with
-  `release-readiness` at the Task level, once, after the last change: a short
-  checklist for medium work, the full matrix for large or high-risk work. The
-  user's request and recorded decisions are the specification when no ticket
-  exists. Fix in-scope gaps, re-check what the fixes affected and report the rest.
-  Docs-only and skill work use their own validations instead.
+- **Task completion.** Close relevant implementations with `release-readiness`
+  at the Task level, once, after the last change. The user's request and
+  recorded decisions are the specification when no ticket exists. Fix in-scope
+  gaps, re-check what the fixes affected and report the rest.
+  - Mechanical edits: never. Small local changes: only on request or relevant
+    risk. Medium: a short
+    checklist when the change is functionally verifiable. Large: always; the
+    full matrix for large, ticket-bound or high-risk work.
+  - `bug`: the original symptom is gone and regressions were checked.
+    `refactor`: behavior preserved and the refactor's goals met.
+    `architecture`: the structural goals, with the applicable evidence.
+  - Docs-only and skill work use their own validations instead.
 - **Delivery.** The Release level runs on request. A Task `GO` never implies a
   Release `GO`.
 - **No repeats, no loops.** Evidence stays valid for the same scope until a later
   change invalidates it. Calls go one way: router -> `release-readiness` ->
   `diff-review` -> `security-audit`, plus `web-design-guidelines`; none of them
-  calls back into the router or `release-readiness`.
+  calls back into the router or `release-readiness`. Fixes after a review or an
+  on-demand readiness report are a new routed task; only the closing Task gate
+  hands in-scope gaps back to the ongoing implementation.
 - **Decisions authorize nothing external.** A `GO`, a clean review or an approved
   audit never authorizes commit, push, merge, publish, deploy, ticket updates or
   messages.
