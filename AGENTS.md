@@ -39,6 +39,12 @@ is a separate, explicitly scoped task.
 - Run `python -m unittest discover -s tests -p "test_*.py" -v` and
   `python scripts/check.py`. Tests use temporary destinations, never a real
   profile. For companion changes also run `node tests/test-brainstorming.cjs`.
+- Behavioral evals in `tests/skill-evals.json` start real `claude -p` sessions
+  and cost tokens, so they are not part of CI. After changing routing, review or
+  readiness skills, run the affected ones with
+  `claude/skills/skill-creator/scripts/run-evals.ps1 -EvalFile tests/skill-evals.json
+  -SkillsRoot claude/skills -InstructionsFile claude/CLAUDE.md -Only <ids>`
+  (SVN cases need `svn`/`svnadmin`).
 - Never import profile snapshots, private references, credentials, local paths,
   work item IDs, internal hosts or old Git history into this repository.
 - Keep upstream licenses and attribution with derived skills. Do not silently
