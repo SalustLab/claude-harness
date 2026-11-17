@@ -69,7 +69,8 @@ not selected for SVN or folders without Git.
   - Docs-only and skill work use their own validations instead.
 - **Delivery.** The Release level runs on request. A Task `GO` never implies a
   Release `GO`.
-- **No repeats, no loops.** Evidence stays valid for the same scope until a later
+- **No repeats, no loops.** Cite valid evidence instead of re-running it, even when
+  a re-run is cheap. Evidence stays valid for the same scope until a later
   change invalidates it. Calls go one way: router -> `release-readiness` ->
   `diff-review` -> `security-audit`, plus `web-design-guidelines`; none of them
   calls back into the router or `release-readiness`. Fixes after a review or an

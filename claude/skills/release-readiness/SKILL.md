@@ -120,7 +120,7 @@ Run or collect only what is relevant and safe, and reuse valid evidence:
 | Environment compatibility, dependencies, configuration | Inspect manifests, lockfiles and config changes |
 | Diff integrity | Only intended files changed; no secrets, debug leftovers or generated noise |
 
-**Reuse rule**: if a review, audit or test run already exists for the same scope and nothing in that scope changed afterwards (same commit/revision/diff), cite it instead of re-running. Re-run only what later changes invalidated. Scale depth to risk and size; a small, low-risk personal change does not need every check.
+**Reuse rule**: if a review, audit or test run already exists for the same scope and nothing in that scope changed afterwards (same commit/revision/diff), cite it instead of re-running, even when a re-run looks cheap. Re-run only what later changes invalidated. Scale depth to risk and size; a small, low-risk personal change does not need every check.
 
 ## Step 5: Manual and Real-Environment Validation
 
