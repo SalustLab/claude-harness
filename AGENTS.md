@@ -44,7 +44,9 @@ is a separate, explicitly scoped task.
   readiness skills, run the affected ones with
   `claude/skills/skill-creator/scripts/run-evals.ps1 -EvalFile tests/skill-evals.json
   -SkillsRoot claude/skills -InstructionsFile claude/CLAUDE.md -Only <ids>`
-  (SVN cases need `svn`/`svnadmin`).
+  (SVN cases need `svn`/`svnadmin`). Known gap: `task-auto-medium` and
+  `task-auto-large` fail on sonnet and opus; the model finishes after `tdd` and
+  skips the closing Task gate. Instruction rewording did not change that.
 - Never import profile snapshots, private references, credentials, local paths,
   work item IDs, internal hosts or old Git history into this repository.
 - Keep upstream licenses and attribution with derived skills. Do not silently
