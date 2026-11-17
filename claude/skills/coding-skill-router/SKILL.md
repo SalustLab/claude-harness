@@ -97,12 +97,14 @@ of truth for how this project uses a framework; current documentation is the
 source of truth for external, version-specific semantics.
 
 When Context7 is available, it is **required** for deciding, changing or relying
-on external framework/library/server semantics: ORM migrations and relationship
-or delete behavior, web frameworks and servers, HTTP headers, buffering and
-streaming, redirects, cookies, authentication, serialization, dependency
-injection, UI and state libraries, build tools, export/import packages, test and
-mocking libraries, external APIs and SDKs. Prefer it over general web search for
-programming-library questions.
+on external framework/library/server semantics, in any language, framework or
+platform. Examples: ORM migrations, relationship or delete behavior and generated
+SQL, web frameworks, application servers and reverse proxies, HTTP headers,
+buffering, streaming and caching, routing and middleware, redirects, cookies,
+sessions and authentication, serialization, dependency injection, UI, state, form
+and query libraries, build tools and bundlers, export/import and document
+packages, test and mocking libraries, cloud SDKs, external APIs and CLIs. Prefer
+it over general web search for programming-library questions.
 
 - Skip it only when following an existing local pattern without changing
   external semantics, and say so: `Context7 skipped: followed existing local

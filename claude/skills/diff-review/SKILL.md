@@ -99,30 +99,28 @@ Do not turn this into a separate diff-bloat audit; flag only the smells above.
 
 ## 5. Report
 
-Present the axes under separate headings, verbatim or lightly cleaned. Do **not** merge or rerank findings across axes. Prose may follow the user's language, but keep these anchors literal: the headings `## Standards` and `## Spec` (a translation may follow in parentheses, e.g. `## Standards (Padrões)`), the finding IDs (`STD-n`, `SPEC-n`) and the classes `BUG` / `RISK` / `SUGGESTION` and `MISSING` / `PARTIAL` / `WRONG` / `SCOPE-CREEP`. They keep the two axes and the evidence level unambiguous. Never fold findings into a generic list such as "points to check".
+Present the axes under separate headings, verbatim or lightly cleaned. Do **not** merge or rerank findings across axes. Never fold findings into a generic list such as "points to check".
 
-```markdown
-## Diff Review: <scope>
-Scope: <VCS> · <commands> · <N files, +a/-b> · excluded: <unrelated files or none>
-Spec source: <path/ticket/session, or "none available">
-Standards sources: <files> + harness and smell baselines
+**Language.** Write every heading, label and sentence of the report in the language of the conversation (the user's latest explicit choice wins). There is no English template to copy: "Standards" and "Spec" name the axes in this file, not the words to print. Keep literal only what must stay stable across languages: the axis codes `(STD)` and `(SPEC)` at the end of each axis heading, the finding IDs (`STD-n`, `SPEC-n`), the classes `BUG` / `RISK` / `SUGGESTION` and `MISSING` / `PARTIAL` / `WRONG` / `SCOPE-CREEP`, severities, paths, commands, identifiers and quoted requirements. The axis heading is the translated axis name plus its code: in Portuguese, for example, `## Padrões (STD)`; in English `## Standards (STD)`; in Spanish `## Estándares (STD)`.
 
-## Standards
-[STD-1] BUG (high) path/file.ext:42 - <issue>. Evidence: <trace>. Rule: <source>. Fix: <fix>
-[STD-2] SUGGESTION path/file.ext:88 - possible Feature Envy: <hunk>. ...
+Report structure, in this order. Each item below describes a slot; label it briefly in the conversation's language.
 
-## Spec
-[SPEC-1] MISSING - "<quoted requirement>" (<source>) has no implementation in the diff.
-[SPEC-2] WRONG path/file.ext:10 - "<quoted requirement>" ... Evidence: ...
-[SPEC-3] SCOPE-CREEP path/file.ext:120 - <unrequested behaviour>
+1. Title line: a level-2 heading naming the review and its scope.
+2. Scope line: VCS, commands run, number of files and +/- lines, files excluded as unrelated (or none).
+3. Spec source: path, ticket or session, or the explicit statement that no spec is available.
+4. Standards sources: files read, plus the harness and smell baselines.
+5. Standards axis heading ending in `(STD)`, then one line per finding:
+   `[STD-1] BUG (high) path/file.ext:42 — <issue> · <evidence> · <rule and its source> · <fix>`
+   `[STD-2] SUGGESTION path/file.ext:88 — <smell name> · <quoted hunk>`
+6. Spec axis heading ending in `(SPEC)`, then one line per finding:
+   `[SPEC-1] MISSING — "<quoted requirement>" (<source>) · <what is absent>`
+   `[SPEC-2] WRONG path/file.ext:10 — "<quoted requirement>" · <evidence>`
+   `[SPEC-3] SCOPE-CREEP path/file.ext:120 — <unrequested behaviour>`
+   An axis with no findings still gets its heading and a one-line statement that nothing was found (or why it could not be checked).
+7. Security section: link to or summary of the `security-audit` report, or "not applicable" with the reason.
+8. Closing line: per axis, the finding count and the worst issue, plus what was not verified.
 
-## Security
-<link to or summary of the security-audit report, or "not applicable: no sensitive surface">
-
-Summary: Standards <n> (worst: <...>) · Spec <n> (worst: <...>) · Not verified: <...>
-```
-
-End with one summary line per axis and the worst issue within each axis. Don't pick a winner across axes.
+Inside a finding line, the `·` separated parts may carry short labels in the conversation's language (for example evidence, rule, fix), never fixed English labels in a non-English conversation. Don't pick a winner across axes.
 
 ## Handoffs
 
