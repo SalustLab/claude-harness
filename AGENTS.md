@@ -26,7 +26,8 @@ bootstrap instructions.
    restart Claude Code, then use `/skills` to confirm discovery. Do not claim
    runtime discovery was verified when only file comparison was performed.
 
-Do not alter model, permissions, MCPs, hooks, plugins, credentials, Git identity,
+The only plugin step is Ponytail (see docs/INSTALL.md), and only after the user
+confirms it. Otherwise do not alter model, permissions, MCPs, hooks, plugins, credentials, Git identity,
 global Git trust or production services as part of installation. Other agents
 may run this installer, but it installs Claude Code paths; adapting another host
 is a separate, explicitly scoped task.

@@ -74,6 +74,35 @@ does not authenticate Claude Code, prove tool availability or test model behavio
 Where the host provides a different skill-loading tool, adapt the invocation
 instead of inventing tool names.
 
+## Ponytail plugin
+
+Ponytail ([DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail),
+MIT) is a recommended part of the harness, installed as a Claude Code plugin,
+not copied into this repo. It keeps a simplicity ladder active (smallest complete
+change, named skips) and adds `/ponytail-review`, `/ponytail-audit`,
+`/ponytail-debt`, `/ponytail-gain` and `/ponytail-help`. The router's Ponytail
+gate uses it when present and is skipped when absent.
+
+It runs session hooks and, by default, writes a per-project task ledger to
+`~/.config/ponytail/band/`. An optional webhook stays empty unless configured.
+Review the plugin before installing and get the user's confirmation first; the
+file installer above never touches plugins.
+
+Agent steps, once the user confirms (user scope shown; use `--scope project` to
+share it with a team):
+
+```sh
+claude plugin marketplace add DietrichGebert/ponytail
+claude plugin install ponytail@ponytail --scope user
+claude plugin list
+```
+
+If `claude plugin` is unavailable, use `/plugin marketplace add
+DietrichGebert/ponytail` and `/plugin install ponytail@ponytail` inside Claude
+Code. If it is already listed, do nothing. Ask the user to restart Claude Code,
+then confirm with `/ponytail-help`; report discovery as unverified until then.
+Do not enable marketplace auto-update unless the user asks.
+
 ## Optional integrations
 
 - Context7 (recommended) can help look up versioned library docs. Official docs

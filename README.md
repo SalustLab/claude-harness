@@ -83,6 +83,27 @@ The harness reuses the project's language, conventions and authorization.
 Skills can be selected automatically or invoked explicitly. They are guidance,
 not enforcement of permissions or a guarantee of correct agent behavior.
 
+## Recommended plugin: Ponytail
+
+[Ponytail](https://github.com/DietrichGebert/ponytail) (MIT) is part of the
+harness but installed as a Claude Code plugin, not copied here. It keeps the
+simplest-complete-change discipline always on and adds `/ponytail-review`,
+`/ponytail-audit` and `/ponytail-debt`; the router's Ponytail gate uses it when
+present. The file installer never touches plugins. Ask your agent, after you
+confirm:
+
+> Read docs/INSTALL.md, section "Ponytail plugin", and install Ponytail for me.
+
+or run it yourself:
+
+```sh
+claude plugin marketplace add DietrichGebert/ponytail
+claude plugin install ponytail@ponytail --scope user
+```
+
+Restart Claude Code and run `/ponytail-help`. Review the plugin first: it runs
+session hooks and keeps a local task ledger by default.
+
 ## Recommended MCP servers
 
 The harness works without MCP servers, but two of them pair well with the skills.
@@ -138,7 +159,7 @@ replace a Claude Code session check in the recipient's environment.
 
 Original harness code is MIT licensed. Adapted skills retain their upstream MIT
 or Apache-2.0 notices. See [ATTRIBUTION.md](ATTRIBUTION.md), [LICENSE](LICENSE) and
-[LICENSES/](LICENSES). No third-party plugin is vendored or installed.
+[LICENSES/](LICENSES). No third-party plugin is vendored or installed by the file installer; Ponytail is a separately installed plugin.
 
 Installation paths and discovery follow the official
 [skills](https://code.claude.com/docs/en/skills) and

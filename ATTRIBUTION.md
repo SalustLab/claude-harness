@@ -21,6 +21,10 @@ on 2026-11-11.
 | `skill-creator`, including grader and comparator agents | [Anthropic: skill-creator @ 2c5958e](https://github.com/anthropics/skills/tree/2c5958ecac7c/skills/skill-creator) | Apache-2.0 |
 | `using-git-worktrees` | [Jesse Vincent / obra: Superpowers @ 22f0b46](https://github.com/obra/superpowers/tree/22f0b463e7a5/skills/using-git-worktrees) | MIT |
 
+Optional, not vendored: the router's Ponytail gate refers to the
+[`ponytail`](https://github.com/DietrichGebert/ponytail) plugin (MIT, Dietrich
+Gebert); it is installed separately by the user's choice.
+
 Adaptations include local names that keep built-in commands available
 (`diff-review`, `security-audit`), Git and SVN support, removal of pre-approved
 tool grants and automatic installs, pinned offline fallbacks, local workflow

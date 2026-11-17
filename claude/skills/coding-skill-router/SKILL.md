@@ -112,6 +112,14 @@ Use the project's existing glossary and context layout. Prefer `GLOSSARY.md` /
 `CONTEXT.md` convention automatically. Ask only about consequential choices the
 request and repository cannot answer. Reuse scoped decisions and authorizations.
 
+## Ponytail gate
+
+Ponytail is a recommended plugin of this harness (install steps: `docs/INSTALL.md`, "Ponytail plugin"). Apply this gate only when it is installed; otherwise skip silently and do not install it unprompted. Base `ponytail` is then persistent via its plugin hook, so the simplicity ladder already covers every diff. It never counts as an execution skill. The router adds:
+
+- After the first plan draft or first diff, check the objective triggers: **3+ new files, any new dependency, a new wrapper/adapter/generic abstraction, ~40+ lines of repeated boilerplate, custom code where stdlib/native/framework/existing project code already solves it.** Any hit → cut before proceeding and say what was cut.
+- On-demand variants (user-invoked, not auto-routed): `ponytail-review` (diff bloat review), `ponytail-audit` (whole-repo scan), `ponytail-debt` (shortcut ledger).
+- Ponytail never skips or weakens: explicit requirements, tests, validation, migrations, security, accessibility, data integrity, audit/history behavior, database safety, build/lint/test validation.
+
 ## Tools and references
 
 ### Library documentation (Context7)

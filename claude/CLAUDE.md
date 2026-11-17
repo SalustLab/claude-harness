@@ -55,6 +55,10 @@ identifiers, numbers, units, restrictions and error strings. Give brief progress
 updates during substantial work. `caveman` is optional communication style,
 activated only when requested; use normal prose for persisted text and questions.
 
+The `ponytail` plugin is a recommended part of the harness: when installed, its
+simplicity ladder applies to all code work and the router's Ponytail gate adds
+objective bloat triggers. It never replaces an execution workflow.
+
 No plugin, MCP, browser automation, subscription tier or model is required by
 this harness. Use tools actually available in the host; report unavailable
 capabilities honestly and use suitable local or official-documentation fallbacks.
